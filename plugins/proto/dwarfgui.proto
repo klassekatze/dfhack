@@ -1,0 +1,67 @@
+package dwarfgui;
+
+//Describes inventory packets
+option optimize_for = LITE_RUNTIME;
+
+
+message InventoryRequest {
+    optional int32 unit_id = 1;
+}
+
+
+message InventoryItem {
+	required bool container = 1;
+	required string name = 2;
+	required int32 id = 3;
+	repeated InventoryItem item = 4;
+	optional int32 itemtype = 5;
+	optional bool is_food = 6;
+	optional bool is_weapon = 7;
+	optional bool is_armor = 8;
+	optional bool is_box = 9;
+	optional bool is_barrel = 10;
+	optional bool is_flask = 11;
+	optional bool is_liquid = 12;
+	optional int32 mode = 13;
+	optional int32 body_part_id = 14;
+}
+
+message InventoryReply {
+    required bool available = 1;
+	optional bool changed = 2;
+    repeated InventoryItem item = 3;
+}
+
+message EquipmentSlotsRequest {
+
+}
+message EquipmentSlotsReply {
+
+}
+message InventoryEquipRequest {
+	optional int32 unit_id = 1;
+	required int32 item_id = 2;
+	optional int32 mode = 3;
+	optional int32 body_part_id = 4;
+}
+message InventoryEquipReply {
+	required bool success = 1;
+	
+}
+
+
+
+message InventoryMoveRequest {
+	optional int32 unit_id = 1;
+    required int32 item_id = 2;
+	required int32 destination_id = 3;
+}
+
+message InventoryMoveReply {
+    required bool success = 1;
+	optional string error = 2;
+}
+
+
+
+
